@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchStatsForZips } from "../../api/rentcast";
 import type { MarketData } from "../types";
-
+import { VerticalBarChart } from "../charts/VerticalBarChart";
 export function AdminDashboard() {
   const [data, setData] = useState<MarketData[] | null>(null);
   const [loading, setLoading] = useState(true);
@@ -68,6 +68,7 @@ export function AdminDashboard() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-semibold mb-4">Dashboard</h1>
+      <VerticalBarChart data={data} loading={loading} />
     </div>
   );
 }
