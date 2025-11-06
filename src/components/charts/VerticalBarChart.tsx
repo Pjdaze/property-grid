@@ -34,7 +34,7 @@ export function VerticalBarChart({ data, loading }: VerticalBarChartProps) {
     maxRent: "#ef4444",
   };
   return (
-    <div className="w-full bg-white rounded-2xl shadow-md p-4 min-w-[400px]">
+    <div className="bg-white rounded-2xl shadow-md p-4 border border-gray-100">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-800">M R C</h2>

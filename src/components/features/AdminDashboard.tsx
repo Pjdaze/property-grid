@@ -2,10 +2,10 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 import { fetchStatsForZips } from "../../api/rentcast";
 import type { MarketData } from "../types";
 import { VerticalBarChart } from "../charts/VerticalBarChart";
-
+import { HistoricalLineChart } from "../charts/HorizontalLineChart";
 import { PieChart } from "../charts/PieChart";
 
-// All available ZIP codes for the Orlando market.
+// All available ZIP codes for the Orlando market :).
 const ALL_AVAILABLE_ZIPS = [
   "32789",
   "32792",
@@ -31,22 +31,19 @@ export function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Filter the full market data to only include selected ZIPs for chart props
   const comparisonData = useMemo(() => {
     if (!allMarkets) return [];
     return allMarkets.filter((market) => selectedZips.includes(market.zip));
   }, [allMarkets, selectedZips]);
 
-  // Filter the available ZIPs for predictive suggestions
   const filteredSuggestions = useMemo(() => {
     if (!allMarkets) return [];
 
-    // Zips that returned data and are NOT currently selected
     const availableZipsWithData = allMarkets.map((m) => m.zip);
 
     const query = searchQuery.trim();
     if (query === "") {
-      return []; // No suggestions unless the user starts typing
+      return [];
     }
 
     return availableZipsWithData
@@ -54,38 +51,31 @@ export function AdminDashboard() {
       .slice(0, 5); // Limit suggestions to 5
   }, [allMarkets, searchQuery, selectedZips]);
 
-  // Handler for adding/removing a zip from selection (used by both search and tag removal)
   const handleZipToggle = useCallback((zip: string) => {
     setSelectedZips((prevZips) => {
       if (prevZips.includes(zip)) {
-        // Remove ZIP, but enforce a minimum of one selected
         if (prevZips.length <= 1) return prevZips;
         return prevZips.filter((z) => z !== zip);
       } else if (prevZips.length < MAX_COMPARISON_ZIPS) {
-        // Add ZIP if limit is not reached
         return [...prevZips, zip];
       }
       return prevZips;
     });
   }, []);
 
-  // Handler for search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value.trim());
   };
 
-  // Handler for selecting a ZIP from the suggestions list
   const handleSuggestionClick = (zip: string) => {
     handleZipToggle(zip);
     setSearchQuery("");
   };
 
-  // Handler for removing a selected tag
   const handleRemoveZip = (zip: string) => {
     handleZipToggle(zip);
   };
 
-  // Effect to load all data (runs only once)
   useEffect(() => {
     const loadAllData = async () => {
       setLoading(true);
@@ -114,7 +104,6 @@ export function AdminDashboard() {
     loadAllData();
   }, []);
 
-  // --- Render Logic (Loading/Error/No Data) ---
   if (loading) return <div className="p-6">Loading all market data...</div>;
   if (error)
     return (
@@ -134,15 +123,12 @@ export function AdminDashboard() {
         Orlando Real Estate Market Analysis
       </h1>
 
-      {/* NEW: Wrapper for Top Grid Sections (Selector, Bar Chart, Pie Charts) */}
-      <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-8">
-        {/* 1. ZIP Code Selector and Search (Predictive Input Focus) */}
+      <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8">
         <section className="bg-[#f9f9f9] p-4 rounded-xl shadow-md border border-gray-100 lg:col-span-full">
           <h2 className="text-lg font-bold mb-4 text-gray-700">
             Select ZIP Codes for Comparison (Max {MAX_COMPARISON_ZIPS})
           </h2>
 
-          {/* Search Input and Suggestions Container */}
           <div className="relative mb-4">
             <div className="relative bg-[#f9f9f9]">
               <svg
@@ -168,7 +154,7 @@ export function AdminDashboard() {
                 }
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                className="w-1/4 min-w-[300px] pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
                 inputMode="numeric"
                 pattern="\d*"
                 maxLength={5}
@@ -202,7 +188,7 @@ export function AdminDashboard() {
           </div>
 
           {/* Selected ZIP Tags (The Blue Checked Inputs) */}
-          <div className="flex flex-wrap gap-3 p-2 bg-[#e5ebf2] rounded-lg border border-transparent">
+          <div className="flex flex-wrap gap-3 p-2  border border-transparent">
             {selectedZips.map((zip) => (
               <button
                 key={zip}
@@ -215,10 +201,11 @@ export function AdminDashboard() {
                       : "hover:bg-blue-700"
                   }
                 `}
-                disabled={selectedZips.length <= 1} // Prevent removing the last one
+                // to prevent removing the last one
+                disabled={selectedZips.length <= 1}
               >
                 {zip}
-                {/* X icon for removal */}
+
                 <svg
                   className="w-4 h-4 ml-1"
                   fill="none"
@@ -237,15 +224,15 @@ export function AdminDashboard() {
           </div>
         </section>
 
-        {/* Conditional Chart Rendering (Sections 2 and 3) */}
+        {/* Conditional Chart Rendering */}
         {comparisonData.length > 0 && (
           <>
-            {/* 2. Vertical Bar Chart (Comparison) */}
+            {/* Vertical Bar Chart (Comparison) */}
             <section className="lg:col-span-2">
               <VerticalBarChart data={comparisonData} loading={false} />
             </section>
 
-            {/* 3. Pie Charts (Housing Mix) */}
+            {/*  Pie Charts  */}
             <section className="space-y-4 lg:col-span-2">
               <h2 className="text-xl font-bold text-gray-700 border-b pb-2">
                 Housing Type Breakdown
@@ -259,6 +246,38 @@ export function AdminDashboard() {
           </>
         )}
       </div>
+
+      {/* Historical Line Charts */}
+      {comparisonData.length > 0 ? (
+        <section className="space-y-6">
+          <h2 className="text-xl font-bold text-gray-700 border-b pb-2">
+            Historical Market Trends (Q1 2025)
+          </h2>
+
+          {comparisonData.map((market) => (
+            <div
+              key={market.zip}
+              className="bg-gray-50 p-4 rounded-xl shadow-inner"
+            >
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                Trends for ZIP {market.zip}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <HistoricalLineChart market={market} metricView="rent" />
+                <HistoricalLineChart
+                  market={market}
+                  metricView="daysOnMarket"
+                />
+                <HistoricalLineChart market={market} metricView="listings" />
+              </div>
+            </div>
+          ))}
+        </section>
+      ) : (
+        <div className="p-6 text-center text-gray-600 bg-white rounded-xl shadow-md">
+          Please select at least one ZIP code to view the comparison data.
+        </div>
+      )}
     </div>
   );
 }
