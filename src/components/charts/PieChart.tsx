@@ -53,17 +53,28 @@ export function PieChart({ market }: PieChartProps) {
       <div className="h-[250px]">
         <ResponsivePie
           data={chartData}
-          margin={{ top: 10, right: 80, bottom: 10, left: 80 }}
-          innerRadius={0.6} // Doughnut style
-          padAngle={1}
-          cornerRadius={3}
+          margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+          innerRadius={0.5}
+          padAngle={0.6}
+          cornerRadius={2}
           activeOuterRadiusOffset={8}
-          // Use the custom colors defined above
-          colors={{ datum: "data.color" }}
-          borderWidth={1}
-          borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-          enableArcLinkLabels={false} // Disable lines for clean look
-          arcLabelsTextColor="#ffffff"
+          colors={{ scheme: "blues" }}
+          arcLinkLabelsSkipAngle={10}
+          arcLinkLabelsTextColor="#333333"
+          arcLinkLabelsThickness={2}
+          arcLinkLabelsColor={{ from: "color" }}
+          arcLabelsSkipAngle={10}
+          arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
+          legends={[
+            {
+              anchor: "bottom",
+              direction: "row",
+              translateY: 56,
+              itemWidth: 100,
+              itemHeight: 18,
+              symbolShape: "circle",
+            },
+          ]}
           // Custom tooltip to show value and percentage
           tooltip={({ datum }) => (
             <div className="px-2 py-1 bg-white rounded shadow text-sm text-gray-800 border border-gray-200">
