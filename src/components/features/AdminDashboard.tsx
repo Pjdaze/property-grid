@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchStatsForZips } from "../../api/rentcast";
 import type { MarketData } from "../types";
 import { VerticalBarChart } from "../charts/VerticalBarChart";
+import { PieChart } from "../charts/PieChart";
 export function AdminDashboard() {
   const [data, setData] = useState<MarketData[] | null>(null);
   const [loading, setLoading] = useState(true);
@@ -66,9 +67,14 @@ export function AdminDashboard() {
     );
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold mb-4">Dashboard</h1>
+    <div className="p-6 space-y-8 mx-auto   bg-[#e5ebf2] w-[95%] rounded-2xl">
       <VerticalBarChart data={data} loading={loading} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Ensure data is defined before accessing data[index] */}
+        {data.length >= 1 && <PieChart market={data[0]} />}
+        {data.length >= 2 && <PieChart market={data[1]} />}
+        {data.length >= 3 && <PieChart market={data[2]} />}
+      </div>
     </div>
   );
 }

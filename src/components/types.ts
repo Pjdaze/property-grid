@@ -2,7 +2,7 @@
 export type HousingType = "Apartment" | "Condo" | "Single Family" | "Townhouse" | string;
 export type BedroomCount = number;
 
-// Fields nneded for rental market data
+// Fields needed for rental market data
 export interface RentalStatsFields {
   averageRent?: number | null;
   medianRent?: number | null;
