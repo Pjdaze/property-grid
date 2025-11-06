@@ -78,7 +78,6 @@ export function HistoricalLineChart({
       <div className="h-[calc(100%-40px)] w-full">
         <ResponsiveLine
           data={chartData}
-          // UPDATED: Increased margin bottom and left for axes
           margin={{ top: 10, right: 10, bottom: 60, left: 70 }}
           xScale={{ type: "point" }}
           yScale={{
@@ -96,9 +95,9 @@ export function HistoricalLineChart({
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            // UPDATED: Added a legend label for the axis
+
             legend: "Month",
-            // UPDATED: Adjusted offset for better label positioning
+
             legendOffset: 45,
             legendPosition: "middle",
           }}
@@ -107,13 +106,12 @@ export function HistoricalLineChart({
             tickPadding: 5,
             tickRotation: 0,
             legend: config.legend,
-            // UPDATED: Adjusted offset to prevent number/label overlap
+
             legendOffset: -60,
             legendPosition: "middle",
           }}
           enableGridX={false}
           colors={config.colors}
-          // UPDATED: Increased point size and border for clarity
           pointSize={8}
           pointBorderWidth={3}
           pointBorderColor={{ from: "serieColor" }}
@@ -124,7 +122,7 @@ export function HistoricalLineChart({
               direction: "column",
               justify: false,
               translateX: 0,
-              // UPDATED: Move legend down slightly for better positioning
+
               translateY: 20,
               itemsSpacing: 0,
               itemDirection: "left-to-right",
