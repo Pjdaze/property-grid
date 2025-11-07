@@ -39,14 +39,14 @@ export function PieChart({ market }: PieChartProps) {
   // If no data is available after filtering, show a message
   if (!chartData || chartData.length === 0) {
     return (
-      <div className="bg-white rounded-2xl shadow-md p-4 h-[300px] flex items-center justify-center text-gray-500">
+      <div className="bg-[#f9f9f9] rounded-2xl shadow-md p-4 h-[300px] flex items-center justify-center text-gray-500">
         No listing data for {market.zip}.
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-4 h-[300px] border border-gray-100">
+    <div className="bg-[#f9f9f9] rounded-2xl shadow-xl p-4 h-[300px] border border-gray-100">
       <h3 className="text-md font-bold text-gray-700 mb-2">
         Housing Mix in ZIP {market.zip}
       </h3>
@@ -77,7 +77,7 @@ export function PieChart({ market }: PieChartProps) {
           ]}
           // Custom tooltip to show value and percentage
           tooltip={({ datum }) => (
-            <div className="px-2 py-1 bg-white rounded shadow text-sm text-gray-800 border border-gray-200">
+            <div className="p-3 bg-blue-900 text-gray-50 rounded-lg shadow-lg text-sm w-[200px] h-auto">
               <strong>{datum.id}:</strong> {datum.value.toLocaleString()}{" "}
               Listings (
               {(

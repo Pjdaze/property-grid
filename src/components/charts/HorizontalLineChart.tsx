@@ -48,12 +48,13 @@ function historyToNivoData(
     data: data
       .map((d) => ({
         x: d.month,
+
         y: (d[key] as number | null) ?? null,
       }))
+
       .filter((d) => d.y !== null),
   }));
 }
-
 export function HistoricalLineChart({
   market,
   metricView,
@@ -69,8 +70,14 @@ export function HistoricalLineChart({
     return historyToNivoData(historicalData, config.keys, market.zip);
   }, [historicalData, config.keys, market.zip]);
 
+  const getReadableMetricLabel = (key: string) => {
+    if (key.includes("average")) return "Avg. " + config.legend;
+    if (key.includes("median")) return "Med. " + config.legend;
+    return config.legend; // Fallback for single key (listings)
+  };
+
   return (
-    <div className="h-96 w-full p-4 bg-white rounded-lg shadow-sm">
+    <div className="h-96 w-full p-4 bg-[#f9f9f9] rounded-lg shadow-sm">
       <h3 className="text-lg font-semibold text-gray-800 mb-2">
         {config.title} for ZIP {market.zip}
       </h3>
@@ -122,7 +129,6 @@ export function HistoricalLineChart({
               direction: "column",
               justify: false,
               translateX: 0,
-
               translateY: 20,
               itemsSpacing: 0,
               itemDirection: "left-to-right",
@@ -132,6 +138,12 @@ export function HistoricalLineChart({
               symbolSize: 12,
               symbolShape: "circle",
               symbolBorderColor: "rgba(0, 0, 0, .5)",
+
+              data: chartData.map((series, index) => ({
+                id: series.id,
+                label: getReadableMetricLabel(series.id),
+                color: config.colors[index],
+              })),
             },
           ]}
         />

@@ -17,8 +17,15 @@ const METRIC_OPTIONS: { key: RentMetric; label: string }[] = [
   { key: "maxRent", label: "Maximum Rent" },
 ];
 
+const colors: Record<RentMetric, string> = {
+  averageRent: "#2563eb",
+  medianRent: "#16a34a",
+  minRent: "#f59e0b",
+  maxRent: "#ef4444",
+};
+
 export function VerticalBarChart({ data, loading }: VerticalBarChartProps) {
-  const [metric, setMetric] = useState<RentMetric>("medianRent");
+  const [metric, setMetric] = useState<RentMetric>("averageRent");
   const [open, setOpen] = useState(false);
 
   const chartData = useMemo(() => {
@@ -27,19 +34,43 @@ export function VerticalBarChart({ data, loading }: VerticalBarChartProps) {
     return buildSeriesForMetric(data, metric);
   }, [data, metric]);
 
-  const colors: Record<RentMetric, string> = {
-    averageRent: "#2563eb",
-    medianRent: "#16a34a",
-    minRent: "#f59e0b",
-    maxRent: "#ef4444",
+  const CustomTooltip = ({ data, color, indexValue }: any) => {
+    const currentMetricLabel = METRIC_OPTIONS.find(
+      (m) => m.key === metric
+    )?.label;
+    const currentMetricValue = data.value.toLocaleString();
+
+    // Fallback in case of weird data
+    if (!currentMetricLabel) return null;
+
+    return (
+      <div
+        // Tailwind classes replace inline styles
+        className="p-3 bg-blue-900 text-gray-50 rounded-lg shadow-lg text-sm w-[200px] h-auto"
+        style={{
+          // Keep the dynamic border style inline since it relies on the 'color' prop
+          border: `1px solid ${color}`,
+        }}
+      >
+        {/* ZIP Code (indexValue) */}
+        <div className="font-bold mb-1">ZIP: {indexValue}</div>
+        {/* Metric Value (data.value) */}
+        <div>
+          {currentMetricLabel}:{" "}
+          {/* Use inline style for dynamic color on the value */}
+          <span style={{ fontWeight: "bold", color: color }}>
+            ${currentMetricValue}
+          </span>
+        </div>
+      </div>
+    );
   };
   return (
-    <div className="bg-white rounded-2xl shadow-md p-4 border border-gray-100">
-      {/* Header */}
+    <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-200">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-800">M R C</h2>
-
-        {/* Custom Dropdown */}
+        <h2 className="text-xl font-bold text-gray-700">
+          Market Rent Comparison
+        </h2>
         <div className="relative inline-block text-left">
           <button
             onClick={() => setOpen((prev) => !prev)}
@@ -83,7 +114,6 @@ export function VerticalBarChart({ data, loading }: VerticalBarChartProps) {
           )}
         </div>
       </div>
-
       {/* Chart */}
       <div className="h-[400px]">
         {loading ? (
@@ -95,30 +125,24 @@ export function VerticalBarChart({ data, loading }: VerticalBarChartProps) {
             data={chartData}
             keys={["value"]}
             indexBy="zip"
-            margin={{ top: 20, right: 30, bottom: 50, left: 70 }}
+            margin={{ top: 20, right: 30, bottom: 60, left: 70 }}
             padding={0.4}
             colors={[colors[metric] ?? "#2563eb"]}
             borderRadius={6}
             theme={{
               text: {
-                fill: "#374151",
+                fill: "#f9f9f9",
                 fontSize: 12,
               },
               tooltip: {
-                container: {
-                  background: "#fff",
-                  color: "#111",
-                  borderRadius: "8px",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
-                  padding: "6px 10px",
-                },
+                container: {},
               },
               axis: {
                 ticks: {
                   text: { fill: "#4b5563" },
                 },
                 legend: {
-                  text: { fill: "#374151" },
+                  text: { fill: "#" },
                 },
               },
               grid: {
@@ -139,15 +163,7 @@ export function VerticalBarChart({ data, loading }: VerticalBarChartProps) {
               legendOffset: -55,
               legendPosition: "middle",
             }}
-            tooltip={({ data }) => (
-              <div className="px-2 py-1 bg-white rounded shadow text-sm text-gray-800 border border-gray-200">
-                <strong>
-                  {data.zip} (
-                  {METRIC_OPTIONS.find((m) => m.key === metric)?.label}):
-                </strong>{" "}
-                ${Number(data.value).toLocaleString()}
-              </div>
-            )}
+            tooltip={CustomTooltip}
             animate={true}
             motionConfig="gentle"
           />

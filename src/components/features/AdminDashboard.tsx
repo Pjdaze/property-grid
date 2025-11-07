@@ -5,7 +5,6 @@ import { VerticalBarChart } from "../charts/VerticalBarChart";
 import { HistoricalLineChart } from "../charts/HorizontalLineChart";
 import { PieChart } from "../charts/PieChart";
 
-// All available ZIP codes for the Orlando market :).
 const ALL_AVAILABLE_ZIPS = [
   "32789",
   "32792",
@@ -118,19 +117,17 @@ export function AdminDashboard() {
     return <div className="p-6">No data available</div>;
 
   return (
-    <div className="p-6 space-y-8 mx-auto bg-[#e5ebf2] w-full max-w-7xl rounded-2xl shadow-xl">
-      <h1 className="text-3xl font-extrabold text-gray-900">
-        Orlando Real Estate Market Analysis
-      </h1>
-
+    <div className="space-y-8 mx-auto w-[95%] rounded bg-[#e5ebf0] rounded-lg">
       <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8">
-        <section className="bg-[#f9f9f9] p-4 rounded-xl shadow-md border border-gray-100 lg:col-span-full">
-          <h2 className="text-lg font-bold mb-4 text-gray-700">
-            Select ZIP Codes for Comparison (Max {MAX_COMPARISON_ZIPS})
+        <section className="bg-[#f9f9f9] p-6 rounded-2xl shadow-lg border border-gray-200 lg:col-span-full">
+          <h2 className="text-xl font-bold mb-6 text-gray-700">
+            Select up to 3 ZIP Codes to Compare
           </h2>
 
-          <div className="relative mb-4">
-            <div className="relative bg-[#f9f9f9]">
+          <div className="relative mb-6">
+            {" "}
+            {/* Increased bottom margin for spacing */}
+            <div className="relative">
               <svg
                 className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"
                 xmlns="http://www.w3.org/2000/svg"
@@ -161,12 +158,11 @@ export function AdminDashboard() {
                 disabled={selectedZips.length >= MAX_COMPARISON_ZIPS}
               />
             </div>
-
-            {/* Suggestions Dropdown */}
+            {/* Suggestions Dropdown (No style changes needed here) */}
             {searchQuery.length > 0 &&
               filteredSuggestions.length > 0 &&
               selectedZips.length < MAX_COMPARISON_ZIPS && (
-                <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-lg shadow-xl mt-1 max-h-48 overflow-y-auto">
+                <ul className="absolute z-10 w-full bg-[#f9f9f9] border border-gray-300 rounded-lg shadow-xl mt-1 max-h-48 overflow-y-auto">
                   {filteredSuggestions.map((zip) => (
                     <li
                       key={zip}
@@ -187,13 +183,13 @@ export function AdminDashboard() {
               )}
           </div>
 
-          {/* Selected ZIP Tags (The Blue Checked Inputs) */}
-          <div className="flex flex-wrap gap-3 p-2  border border-transparent">
+          {/* Selected ZIP Tags */}
+          <div className="flex flex-wrap  gap-3 p-2 border border-transparent">
             {selectedZips.map((zip) => (
               <button
                 key={zip}
                 onClick={() => handleRemoveZip(zip)}
-                className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 
                   bg-blue-600 text-white shadow-md flex items-center 
                   ${
                     selectedZips.length <= 1
@@ -227,17 +223,17 @@ export function AdminDashboard() {
         {/* Conditional Chart Rendering */}
         {comparisonData.length > 0 && (
           <>
-            {/* Vertical Bar Chart (Comparison) */}
-            <section className="lg:col-span-2">
+            <section className="lg:col-span-1 bg-[#f9f9f9] p-6 rounded-2xl shadow-lg border border-gray-200">
               <VerticalBarChart data={comparisonData} loading={false} />
             </section>
 
-            {/*  Pie Charts  */}
-            <section className="space-y-4 lg:col-span-2">
-              <h2 className="text-xl font-bold text-gray-700 border-b pb-2">
+            {/* Pie Charts  */}
+            <section className="space-y-6 lg:col-span-2">
+              {" "}
+              <h2 className="text-xl font-bold text-gray-700">
                 Housing Type Breakdown
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#f9f9f9] p-6 rounded-2xl shadow-lg border border-gray-200">
                 {comparisonData.map((market) => (
                   <PieChart key={market.zip} market={market} />
                 ))}
@@ -250,19 +246,21 @@ export function AdminDashboard() {
       {/* Historical Line Charts */}
       {comparisonData.length > 0 ? (
         <section className="space-y-6">
-          <h2 className="text-xl font-bold text-gray-700 border-b pb-2">
+          <h2 className="text-xl font-bold text-gray-700">
             Historical Market Trends (Q1 2025)
           </h2>
 
           {comparisonData.map((market) => (
             <div
               key={market.zip}
-              className="bg-gray-50 p-4 rounded-xl shadow-inner"
+              className="bg-[#f9f9f9] p-6 rounded-2xl shadow-lg border border-gray-200"
             >
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+              <h3 className="text-xl font-bold text-gray-800 mb-6">
+                {" "}
                 Trends for ZIP {market.zip}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <HistoricalLineChart market={market} metricView="rent" />
                 <HistoricalLineChart
                   market={market}
@@ -274,7 +272,7 @@ export function AdminDashboard() {
           ))}
         </section>
       ) : (
-        <div className="p-6 text-center text-gray-600 bg-white rounded-xl shadow-md">
+        <div className="p-6 text-center text-gray-600 bg-[#f9f9f9] rounded-xl shadow-md">
           Please select at least one ZIP code to view the comparison data.
         </div>
       )}

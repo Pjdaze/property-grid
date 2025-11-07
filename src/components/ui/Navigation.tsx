@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 export function Navigation() {
   return (
     <nav
-      className="bg-gray-700 p-3 w-[95%] rounded-lg mx-auto my-4"
+      className=" bg-[#f9f9f9] p-3 w-[95%] rounded-lg mx-auto my-4"
       aria-label="Main navigation"
     >
       <ul className="flex gap-2 list-none m-0 p-0">
