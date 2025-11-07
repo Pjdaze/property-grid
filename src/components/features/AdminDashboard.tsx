@@ -4,6 +4,7 @@ import type { MarketData } from "../types";
 import { VerticalBarChart } from "../charts/VerticalBarChart";
 import { HistoricalLineChart } from "../charts/HorizontalLineChart";
 import { PieChart } from "../charts/PieChart";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/16/solid";
 
 const ALL_AVAILABLE_ZIPS = [
   "32789",
@@ -19,7 +20,7 @@ const ALL_AVAILABLE_ZIPS = [
   "32812",
   "32814",
 ];
-const MAX_COMPARISON_ZIPS = 3;
+const MAX_COMPARISON_ZIPS = 4;
 
 export function AdminDashboard() {
   const [allMarkets, setAllMarkets] = useState<MarketData[] | null>(null);
@@ -127,21 +128,8 @@ export function AdminDashboard() {
           <div className="relative mb-6">
             {" "}
             {/* Increased bottom margin for spacing */}
-            <div className="relative">
-              <svg
-                className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+            <div className="relative text-sm">
+              <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
               <input
                 type="search"
                 placeholder={
@@ -202,19 +190,7 @@ export function AdminDashboard() {
               >
                 {zip}
 
-                <svg
-                  className="w-4 h-4 ml-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <XMarkIcon className="w-4 h-4 ml-1" />
               </button>
             ))}
           </div>

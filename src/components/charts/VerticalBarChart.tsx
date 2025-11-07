@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import type { MarketData } from "../types";
 import { ResponsiveBar } from "@nivo/bar";
 import { buildSeriesForMetric } from "../../api/rentcast";
+import { ChevronDownIcon } from "@heroicons/react/16/solid";
 
 interface VerticalBarChartProps {
   data: MarketData[];
@@ -77,18 +78,8 @@ export function VerticalBarChart({ data, loading }: VerticalBarChartProps) {
             className="inline-flex justify-between w-48 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
           >
             {METRIC_OPTIONS.find((m) => m.key === metric)?.label}
-            <svg
-              className="ml-2 h-4 w-4 text-gray-500"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
-                clipRule="evenodd"
-              />
-            </svg>
+
+            <ChevronDownIcon className="ml-2 h-4 w-4 text-gray-500" />
           </button>
 
           {open && (

@@ -5,7 +5,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { Navigation } from "./components/ui/Navigation";
 const App = () => {
   return (
-    <div className="min-h-screen w-[95%] mx-auto  bg-[#e5ebf0] p-4 rounded-lg m-10">
+    <div className="min-h-screen w-[97%] mx-auto  bg-[#e5ebf0] p-4 rounded-xl m-10">
       <Navigation />
       <ProtectedRoute>
         <div className="flex-1 flex justify-center items-center">
