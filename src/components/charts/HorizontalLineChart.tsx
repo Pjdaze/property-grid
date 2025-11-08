@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { ResponsiveLine } from "@nivo/line";
 import type { MarketData, HistoricalPoint } from "../types";
-import { extractHistoricalMonths } from "../../api/rentcast";
+import { extractHistoricalMonths } from "../../api/rentcastMock";
 
 type HistoricalMetric = "rent" | "daysOnMarket" | "listings";
 

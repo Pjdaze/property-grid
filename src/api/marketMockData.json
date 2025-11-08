@@ -1,0 +1,398 @@
+[
+  {
+    "zip": "32789",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32789",
+    "metrics": {
+      "averageRent": 2350,
+      "medianRent": 2296,
+      "minRent": 1800,
+      "maxRent": 3500,
+      "averageSqft": 1200,
+      "medianSqft": 1150,
+      "averageDaysOnMarket": 40,
+      "medianDaysOnMarket": 35,
+      "totalListings": 130
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2400, "medianRent": 2350, "totalListings": 30 },
+      { "propertyType": "Condo", "averageRent": 2100, "medianRent": 2050, "totalListings": 25 },
+      { "propertyType": "Apartment", "averageRent": 2300, "medianRent": 2250, "totalListings": 20 },
+      { "propertyType": "Townhouse", "averageRent": 2500, "medianRent": 2450, "totalListings": 25 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1800, "medianRent": 1750, "totalListings": 40 },
+      { "bedrooms": 2, "averageRent": 2300, "medianRent": 2250, "totalListings": 60 },
+      { "bedrooms": 3, "averageRent": 2800, "medianRent": 2750, "totalListings": 30 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 2200, "averageDaysOnMarket": 55, "totalListings": 141 },
+      { "month": "Jan", "medianRent": 2250, "averageDaysOnMarket": 45, "totalListings": 160 },
+      { "month": "Feb", "medianRent": 2300, "averageDaysOnMarket": 35, "totalListings": 130 }
+    ]
+  },
+  {
+    "zip": "32792",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32792",
+    "metrics": {
+      "averageRent": 1850,
+      "medianRent": 1777,
+      "minRent": 1500,
+      "maxRent": 2800,
+      "averageSqft": 1000,
+      "medianSqft": 950,
+      "averageDaysOnMarket": 30,
+      "medianDaysOnMarket": 25,
+      "totalListings": 210
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 1900, "medianRent": 1850, "totalListings": 40 },
+      { "propertyType": "Condo", "averageRent": 1600, "medianRent": 1550, "totalListings": 30 },
+      { "propertyType": "Apartment", "averageRent": 1850, "medianRent": 1800, "totalListings": 15 },
+      { "propertyType": "Townhouse", "averageRent": 2000, "medianRent": 1950, "totalListings": 15 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1500, "medianRent": 1450, "totalListings": 80 },
+      { "bedrooms": 2, "averageRent": 1900, "medianRent": 1850, "totalListings": 100 },
+      { "bedrooms": 3, "averageRent": 2400, "medianRent": 2350, "totalListings": 30 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 1900, "averageDaysOnMarket": 40, "totalListings": 200 },
+      { "month": "Jan", "medianRent": 1950, "averageDaysOnMarket": 30, "totalListings": 220 },
+      { "month": "Feb", "medianRent": 1920, "averageDaysOnMarket": 20, "totalListings": 210 }
+    ]
+  },
+  {
+    "zip": "32807",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32807",
+    "metrics": {
+      "averageRent": 1950,
+      "medianRent": 1905,
+      "minRent": 1650,
+      "maxRent": 3000,
+      "averageSqft": 1100,
+      "medianSqft": 1050,
+      "averageDaysOnMarket": 50,
+      "medianDaysOnMarket": 40,
+      "totalListings": 125
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2000, "medianRent": 1950, "totalListings": 25 },
+      { "propertyType": "Condo", "averageRent": 1850, "medianRent": 1800, "totalListings": 35 },
+      { "propertyType": "Apartment", "averageRent": 1950, "medianRent": 1900, "totalListings": 30 },
+      { "propertyType": "Townhouse", "averageRent": 2100, "medianRent": 2050, "totalListings": 10 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1600, "medianRent": 1550, "totalListings": 50 },
+      { "bedrooms": 2, "averageRent": 1950, "medianRent": 1900, "totalListings": 50 },
+      { "bedrooms": 3, "averageRent": 2400, "medianRent": 2350, "totalListings": 25 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 1850, "averageDaysOnMarket": 60, "totalListings": 110 },
+      { "month": "Jan", "medianRent": 1900, "averageDaysOnMarket": 50, "totalListings": 120 },
+      { "month": "Feb", "medianRent": 1910, "averageDaysOnMarket": 40, "totalListings": 125 }
+    ]
+  },
+  {
+    "zip": "32801",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32801",
+    "metrics": {
+      "averageRent": 2600,
+      "medianRent": 2550,
+      "minRent": 2100,
+      "maxRent": 4000,
+      "averageSqft": 950,
+      "medianSqft": 900,
+      "averageDaysOnMarket": 25,
+      "medianDaysOnMarket": 20,
+      "totalListings": 85
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 3000, "medianRent": 2950, "totalListings": 10 },
+      { "propertyType": "Condo", "averageRent": 2500, "medianRent": 2450, "totalListings": 50 },
+      { "propertyType": "Apartment", "averageRent": 2600, "medianRent": 2550, "totalListings": 30 },
+      { "propertyType": "Townhouse", "averageRent": 2800, "medianRent": 2750, "totalListings": 10 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 2300, "medianRent": 2250, "totalListings": 40 },
+      { "bedrooms": 2, "averageRent": 2700, "medianRent": 2650, "totalListings": 35 },
+      { "bedrooms": 3, "averageRent": 3200, "medianRent": 3150, "totalListings": 10 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 2400, "averageDaysOnMarket": 30, "totalListings": 80 },
+      { "month": "Jan", "medianRent": 2500, "averageDaysOnMarket": 25, "totalListings": 90 },
+      { "month": "Feb", "medianRent": 2550, "averageDaysOnMarket": 20, "totalListings": 85 }
+    ]
+  },
+  {
+    "zip": "32803",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32803",
+    "metrics": {
+      "averageRent": 2180,
+      "medianRent": 2100,
+      "minRent": 1700,
+      "maxRent": 3200,
+      "averageSqft": 1300,
+      "medianSqft": 1250,
+      "averageDaysOnMarket": 40,
+      "medianDaysOnMarket": 30,
+      "totalListings": 155
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2300, "medianRent": 2250, "totalListings": 45 },
+      { "propertyType": "Condo", "averageRent": 2000, "medianRent": 1950, "totalListings": 15 },
+      { "propertyType": "Apartment", "averageRent": 2150, "medianRent": 2100, "totalListings": 25 },
+      { "propertyType": "Townhouse", "averageRent": 2250, "medianRent": 2200, "totalListings": 15 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1850, "medianRent": 1800, "totalListings": 50 },
+      { "bedrooms": 2, "averageRent": 2200, "medianRent": 2150, "totalListings": 70 },
+      { "bedrooms": 3, "averageRent": 2700, "medianRent": 2650, "totalListings": 35 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 2000, "averageDaysOnMarket": 45, "totalListings": 150 },
+      { "month": "Jan", "medianRent": 2050, "averageDaysOnMarket": 40, "totalListings": 160 },
+      { "month": "Feb", "medianRent": 2100, "averageDaysOnMarket": 30, "totalListings": 155 }
+    ]
+  },
+  {
+    "zip": "32804",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32804",
+    "metrics": {
+      "averageRent": 2500,
+      "medianRent": 2450,
+      "minRent": 2000,
+      "maxRent": 3800,
+      "averageSqft": 1400,
+      "medianSqft": 1350,
+      "averageDaysOnMarket": 30,
+      "medianDaysOnMarket": 25,
+      "totalListings": 98
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2700, "medianRent": 2650, "totalListings": 50 },
+      { "propertyType": "Condo", "averageRent": 2300, "medianRent": 2250, "totalListings": 10 },
+      { "propertyType": "Apartment", "averageRent": 2450, "medianRent": 2400, "totalListings": 20 },
+      { "propertyType": "Townhouse", "averageRent": 2600, "medianRent": 2550, "totalListings": 20 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 2050, "medianRent": 2000, "totalListings": 30 },
+      { "bedrooms": 2, "averageRent": 2500, "medianRent": 2450, "totalListings": 50 },
+      { "bedrooms": 3, "averageRent": 3100, "medianRent": 3050, "totalListings": 18 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 2350, "averageDaysOnMarket": 35, "totalListings": 100 },
+      { "month": "Jan", "medianRent": 2400, "averageDaysOnMarket": 30, "totalListings": 105 },
+      { "month": "Feb", "medianRent": 2450, "averageDaysOnMarket": 25, "totalListings": 98 }
+    ]
+  },
+  {
+    "zip": "32806",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32806",
+    "metrics": {
+      "averageRent": 2120,
+      "medianRent": 2050,
+      "minRent": 1750,
+      "maxRent": 3100,
+      "averageSqft": 1150,
+      "medianSqft": 1100,
+      "averageDaysOnMarket": 45,
+      "medianDaysOnMarket": 35,
+      "totalListings": 135
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2250, "medianRent": 2200, "totalListings": 35 },
+      { "propertyType": "Condo", "averageRent": 2000, "medianRent": 1950, "totalListings": 20 },
+      { "propertyType": "Apartment", "averageRent": 2100, "medianRent": 2050, "totalListings": 30 },
+      { "propertyType": "Townhouse", "averageRent": 2300, "medianRent": 2250, "totalListings": 15 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1800, "medianRent": 1750, "totalListings": 45 },
+      { "bedrooms": 2, "averageRent": 2150, "medianRent": 2100, "totalListings": 60 },
+      { "bedrooms": 3, "averageRent": 2600, "medianRent": 2550, "totalListings": 30 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 1980, "averageDaysOnMarket": 50, "totalListings": 130 },
+      { "month": "Jan", "medianRent": 2020, "averageDaysOnMarket": 45, "totalListings": 140 },
+      { "month": "Feb", "medianRent": 2050, "averageDaysOnMarket": 35, "totalListings": 135 }
+    ]
+  },
+  {
+    "zip": "32808",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32808",
+    "metrics": {
+      "averageRent": 1750,
+      "medianRent": 1680,
+      "minRent": 1400,
+      "maxRent": 2500,
+      "averageSqft": 1350,
+      "medianSqft": 1300,
+      "averageDaysOnMarket": 65,
+      "medianDaysOnMarket": 55,
+      "totalListings": 175
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 1800, "medianRent": 1750, "totalListings": 60 },
+      { "propertyType": "Condo", "averageRent": 1500, "medianRent": 1450, "totalListings": 5 },
+      { "propertyType": "Apartment", "averageRent": 1700, "medianRent": 1650, "totalListings": 25 },
+      { "propertyType": "Townhouse", "averageRent": 1900, "medianRent": 1850, "totalListings": 10 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1500, "medianRent": 1450, "totalListings": 60 },
+      { "bedrooms": 2, "averageRent": 1750, "medianRent": 1700, "totalListings": 80 },
+      { "bedrooms": 3, "averageRent": 2100, "medianRent": 2050, "totalListings": 35 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 1600, "averageDaysOnMarket": 70, "totalListings": 180 },
+      { "month": "Jan", "medianRent": 1650, "averageDaysOnMarket": 65, "totalListings": 190 },
+      { "month": "Feb", "medianRent": 1680, "averageDaysOnMarket": 55, "totalListings": 175 }
+    ]
+  },
+  {
+    "zip": "32809",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32809",
+    "metrics": {
+      "averageRent": 2050,
+      "medianRent": 1980,
+      "minRent": 1650,
+      "maxRent": 3000,
+      "averageSqft": 1050,
+      "medianSqft": 1000,
+      "averageDaysOnMarket": 35,
+      "medianDaysOnMarket": 30,
+      "totalListings": 165
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2150, "medianRent": 2100, "totalListings": 30 },
+      { "propertyType": "Condo", "averageRent": 1800, "medianRent": 1750, "totalListings": 10 },
+      { "propertyType": "Apartment", "averageRent": 1950, "medianRent": 1900, "totalListings": 40 },
+      { "propertyType": "Townhouse", "averageRent": 2300, "medianRent": 2250, "totalListings": 20 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1700, "medianRent": 1650, "totalListings": 60 },
+      { "bedrooms": 2, "averageRent": 2000, "medianRent": 1950, "totalListings": 80 },
+      { "bedrooms": 3, "averageRent": 2500, "medianRent": 2450, "totalListings": 25 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 1900, "averageDaysOnMarket": 40, "totalListings": 160 },
+      { "month": "Jan", "medianRent": 1950, "averageDaysOnMarket": 35, "totalListings": 170 },
+      { "month": "Feb", "medianRent": 1980, "averageDaysOnMarket": 30, "totalListings": 165 }
+    ]
+  },
+  {
+    "zip": "32810",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32810",
+    "metrics": {
+      "averageRent": 1920,
+      "medianRent": 1850,
+      "minRent": 1550,
+      "maxRent": 2700,
+      "averageSqft": 1250,
+      "medianSqft": 1200,
+      "averageDaysOnMarket": 50,
+      "medianDaysOnMarket": 45,
+      "totalListings": 145
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2000, "medianRent": 1950, "totalListings": 50 },
+      { "propertyType": "Condo", "averageRent": 1700, "medianRent": 1650, "totalListings": 5 },
+      { "propertyType": "Apartment", "averageRent": 1850, "medianRent": 1800, "totalListings": 35 },
+      { "propertyType": "Townhouse", "averageRent": 2100, "medianRent": 2050, "totalListings": 10 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1650, "medianRent": 1600, "totalListings": 50 },
+      { "bedrooms": 2, "averageRent": 1900, "medianRent": 1850, "totalListings": 70 },
+      { "bedrooms": 3, "averageRent": 2300, "medianRent": 2250, "totalListings": 25 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 1780, "averageDaysOnMarket": 55, "totalListings": 140 },
+      { "month": "Jan", "medianRent": 1820, "averageDaysOnMarket": 50, "totalListings": 150 },
+      { "month": "Feb", "medianRent": 1850, "averageDaysOnMarket": 45, "totalListings": 145 }
+    ]
+  },
+  {
+    "zip": "32812",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32812",
+    "metrics": {
+      "averageRent": 2200,
+      "medianRent": 2150,
+      "minRent": 1850,
+      "maxRent": 3300,
+      "averageSqft": 1300,
+      "medianSqft": 1250,
+      "averageDaysOnMarket": 35,
+      "medianDaysOnMarket": 30,
+      "totalListings": 115
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2350, "medianRent": 2300, "totalListings": 40 },
+      { "propertyType": "Condo", "averageRent": 2050, "medianRent": 2000, "totalListings": 20 },
+      { "propertyType": "Apartment", "averageRent": 2150, "medianRent": 2100, "totalListings": 30 },
+      { "propertyType": "Townhouse", "averageRent": 2400, "medianRent": 2350, "totalListings": 10 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 1900, "medianRent": 1850, "totalListings": 40 },
+      { "bedrooms": 2, "averageRent": 2200, "medianRent": 2150, "totalListings": 50 },
+      { "bedrooms": 3, "averageRent": 2700, "medianRent": 2650, "totalListings": 25 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 2050, "averageDaysOnMarket": 40, "totalListings": 110 },
+      { "month": "Jan", "medianRent": 2100, "averageDaysOnMarket": 35, "totalListings": 120 },
+      { "month": "Feb", "medianRent": 2150, "averageDaysOnMarket": 30, "totalListings": 115 }
+    ]
+  },
+  {
+    "zip": "32814",
+    "city": "Orlando",
+    "state": "FL",
+    "market": "32814",
+    "metrics": {
+      "averageRent": 2700,
+      "medianRent": 2650,
+      "minRent": 2200,
+      "maxRent": 4200,
+      "averageSqft": 1100,
+      "medianSqft": 1050,
+      "averageDaysOnMarket": 20,
+      "medianDaysOnMarket": 15,
+      "totalListings": 75
+    },
+    "dataByPropertyType": [
+      { "propertyType": "Single Family", "averageRent": 2900, "medianRent": 2850, "totalListings": 20 },
+      { "propertyType": "Condo", "averageRent": 2600, "medianRent": 2550, "totalListings": 40 },
+      { "propertyType": "Apartment", "averageRent": 2700, "medianRent": 2650, "totalListings": 30 },
+      { "propertyType": "Townhouse", "averageRent": 3000, "medianRent": 2950, "totalListings": 10 }
+    ],
+    "dataByBedrooms": [
+      { "bedrooms": 1, "averageRent": 2400, "medianRent": 2350, "totalListings": 30 },
+      { "bedrooms": 2, "averageRent": 2800, "medianRent": 2750, "totalListings": 35 },
+      { "bedrooms": 3, "averageRent": 3300, "medianRent": 3250, "totalListings": 10 }
+    ],
+    "historical": [
+      { "month": "Dec", "medianRent": 2500, "averageDaysOnMarket": 25, "totalListings": 70 },
+      { "month": "Jan", "medianRent": 2600, "averageDaysOnMarket": 20, "totalListings": 80 },
+      { "month": "Feb", "medianRent": 2650, "averageDaysOnMarket": 15, "totalListings": 75 }
+    ]
+  }
+]

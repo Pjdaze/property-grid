@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
-import { fetchStatsForZips } from "../../api/rentcast";
+import { fetchStatsForZips } from "../../api/rentcastMock";
 import type { MarketData } from "../types";
 import { VerticalBarChart } from "../charts/VerticalBarChart";
 import { HistoricalLineChart } from "../charts/HorizontalLineChart";

@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import type { MarketData } from "../types";
 import { ResponsiveBar } from "@nivo/bar";
-import { buildSeriesForMetric } from "../../api/rentcast";
+import { buildSeriesForMetric } from "../../api/rentcastMock";
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 
 interface VerticalBarChartProps {

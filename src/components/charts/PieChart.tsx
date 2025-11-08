@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { ResponsivePie } from "@nivo/pie";
 import type { MarketData } from "../types";
-import { extractHousingTypeBreakdown } from "../../api/rentcast";
+import { extractHousingTypeBreakdown } from "../../api/rentcastMock";
 
 // Define the required props for the Pie Chart
 interface PieChartProps {
