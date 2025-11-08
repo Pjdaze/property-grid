@@ -61,7 +61,6 @@ export function HistoricalLineChart({
 }: HistoricalLineChartProps) {
   const config = METRIC_CONFIG[metricView];
 
-  // Data processing hooks from Commit B
   const historicalData = useMemo(() => {
     return extractHistoricalMonths(market);
   }, [market]);

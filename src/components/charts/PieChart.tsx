@@ -10,12 +10,6 @@ interface PieChartProps {
 }
 
 // Define the colors for the four property types for visual consistency
-const PROPERTY_TYPE_COLORS: Record<string, string> = {
-  Apartment: "#2563eb", // Blue
-  Condo: "#16a34a", // Green
-  "Single Family": "#f59e0b", // Yellow/Orange
-  Townhouse: "#ef4444", // Red
-};
 
 export function PieChart({ market }: PieChartProps) {
   // Use useMemo to prepare the data structure required by Nivo
@@ -32,7 +26,6 @@ export function PieChart({ market }: PieChartProps) {
         // The value represents the proportion of total listings
         value: d.totalListings,
         // Add a color for Nivo's styling
-        color: PROPERTY_TYPE_COLORS[d.type] || "#cccccc",
       }));
   }, [market]);
 

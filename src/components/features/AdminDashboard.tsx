@@ -5,7 +5,7 @@ import { VerticalBarChart } from "../charts/VerticalBarChart";
 import { HistoricalLineChart } from "../charts/HorizontalLineChart";
 import { PieChart } from "../charts/PieChart";
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/16/solid";
-
+// hardcoded set to avoid massive data load
 const ALL_AVAILABLE_ZIPS = [
   "32789",
   "32792",
@@ -20,7 +20,7 @@ const ALL_AVAILABLE_ZIPS = [
   "32812",
   "32814",
 ];
-const MAX_COMPARISON_ZIPS = 4;
+const MAX_COMPARISON_ZIPS = 8;
 
 export function AdminDashboard() {
   const [allMarkets, setAllMarkets] = useState<MarketData[] | null>(null);
@@ -116,127 +116,114 @@ export function AdminDashboard() {
     );
   if (!allMarkets || allMarkets.length === 0)
     return <div className="p-6">No data available</div>;
-
   return (
-    <div className="space-y-8 mx-auto w-[95%] rounded bg-[#e5ebf0] rounded-lg">
-      <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8">
-        <section className="bg-[#f9f9f9] p-6 rounded-2xl shadow-lg border border-gray-200 lg:col-span-full">
-          <h2 className="text-xl font-bold mb-6 text-gray-700">
-            Select up to 3 ZIP Codes to Compare
-          </h2>
+    <div className="space-y-12 mx-auto w-[95%] py-8 font-sans text-gray-800">
+      {/* ZIP Selector */}
+      <section className="p-8 rounded-2xl bg-white shadow-md border border-gray-100">
+        <h2 className="text-2xl font-semibold mb-6 tracking-tight">
+          Compare ZIP Codes
+        </h2>
 
-          <div className="relative mb-6">
-            {" "}
-            {/* Increased bottom margin for spacing */}
-            <div className="relative text-sm">
-              <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" />
-              <input
-                type="search"
-                placeholder={
-                  selectedZips.length >= MAX_COMPARISON_ZIPS
-                    ? "Max zips selected"
-                    : "Type ZIP code (e.g., 32804)"
-                }
-                value={searchQuery}
-                onChange={handleSearchChange}
-                className="w-1/4 min-w-[300px] pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150"
-                inputMode="numeric"
-                pattern="\d*"
-                maxLength={5}
-                disabled={selectedZips.length >= MAX_COMPARISON_ZIPS}
-              />
-            </div>
-            {/* Suggestions Dropdown (No style changes needed here) */}
-            {searchQuery.length > 0 &&
-              filteredSuggestions.length > 0 &&
-              selectedZips.length < MAX_COMPARISON_ZIPS && (
-                <ul className="absolute z-10 w-full bg-[#f9f9f9] border border-gray-300 rounded-lg shadow-xl mt-1 max-h-48 overflow-y-auto">
-                  {filteredSuggestions.map((zip) => (
-                    <li
-                      key={zip}
-                      onClick={() => handleSuggestionClick(zip)}
-                      className="px-4 py-2 cursor-pointer hover:bg-blue-50 text-gray-800"
-                    >
-                      {zip}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            {searchQuery.length > 0 &&
-              filteredSuggestions.length === 0 &&
-              selectedZips.length < MAX_COMPARISON_ZIPS && (
-                <div className="px-4 py-2 text-gray-500 text-sm">
-                  No other ZIPs matching "{searchQuery}" available.
-                </div>
-              )}
+        <div className="relative max-w-lg mb-6">
+          <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2" />
+          <input
+            type="search"
+            placeholder={
+              selectedZips.length >= MAX_COMPARISON_ZIPS
+                ? "Max zips selected"
+                : "Search ZIP (e.g., 32804)"
+            }
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="w-full pl-12 pr-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 text-sm"
+            inputMode="numeric"
+            pattern="\d*"
+            maxLength={5}
+            disabled={selectedZips.length >= MAX_COMPARISON_ZIPS}
+          />
+          {searchQuery &&
+            filteredSuggestions.length > 0 &&
+            selectedZips.length < MAX_COMPARISON_ZIPS && (
+              <ul className="absolute z-20 w-full bg-white border border-gray-200 rounded-lg shadow-sm mt-2 max-h-48 overflow-y-auto text-sm">
+                {filteredSuggestions.map((zip) => (
+                  <li
+                    key={zip}
+                    onClick={() => handleSuggestionClick(zip)}
+                    className="px-4 py-2 cursor-pointer hover:bg-gray-50 transition"
+                  >
+                    {zip}
+                  </li>
+                ))}
+              </ul>
+            )}
+          {searchQuery &&
+            filteredSuggestions.length === 0 &&
+            selectedZips.length < MAX_COMPARISON_ZIPS && (
+              <div className="px-4 py-2 text-gray-400 text-sm">
+                No ZIPs matching "{searchQuery}" found.
+              </div>
+            )}
+        </div>
+
+        {/* Selected ZIP Tags */}
+        <div className="flex flex-wrap gap-3">
+          {selectedZips.map((zip) => (
+            <button
+              key={zip}
+              onClick={() => handleRemoveZip(zip)}
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                selectedZips.length <= 1
+                  ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                  : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+              }`}
+              disabled={selectedZips.length <= 1}
+            >
+              {zip} <XMarkIcon className="w-3 h-3" />
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Comparison Charts */}
+      {comparisonData.length > 0 && (
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="p-6 rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition">
+            <VerticalBarChart data={comparisonData} loading={false} />
           </div>
 
-          {/* Selected ZIP Tags */}
-          <div className="flex flex-wrap  gap-3 p-2 border border-transparent">
-            {selectedZips.map((zip) => (
-              <button
-                key={zip}
-                onClick={() => handleRemoveZip(zip)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 
-                  bg-blue-600 text-white shadow-md flex items-center 
-                  ${
-                    selectedZips.length <= 1
-                      ? "opacity-70 cursor-not-allowed"
-                      : "hover:bg-blue-700"
-                  }
-                `}
-                // to prevent removing the last one
-                disabled={selectedZips.length <= 1}
-              >
-                {zip}
-
-                <XMarkIcon className="w-4 h-4 ml-1" />
-              </button>
-            ))}
+          <div className="lg:col-span-2 space-y-6">
+            <h2 className="text-xl font-semibold mb-4">
+              Housing Type Breakdown
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {comparisonData.map((market) => (
+                <div
+                  key={market.zip}
+                  className="p-4 rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition"
+                >
+                  <PieChart market={market} />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
-
-        {/* Conditional Chart Rendering */}
-        {comparisonData.length > 0 && (
-          <>
-            <section className="lg:col-span-1 bg-[#f9f9f9] p-6 rounded-2xl shadow-lg border border-gray-200">
-              <VerticalBarChart data={comparisonData} loading={false} />
-            </section>
-
-            {/* Pie Charts  */}
-            <section className="space-y-6 lg:col-span-2">
-              {" "}
-              <h2 className="text-xl font-bold text-gray-700">
-                Housing Type Breakdown
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#f9f9f9] p-6 rounded-2xl shadow-lg border border-gray-200">
-                {comparisonData.map((market) => (
-                  <PieChart key={market.zip} market={market} />
-                ))}
-              </div>
-            </section>
-          </>
-        )}
-      </div>
+      )}
 
       {/* Historical Line Charts */}
       {comparisonData.length > 0 ? (
         <section className="space-y-6">
-          <h2 className="text-xl font-bold text-gray-700">
-            Historical Market Trends (Q1 2025)
+          <h2 className="text-xl font-semibold mb-4">
+            Historical Market Trends
           </h2>
-
           {comparisonData.map((market) => (
             <div
               key={market.zip}
-              className="bg-[#f9f9f9] p-6 rounded-2xl shadow-lg border border-gray-200"
+              className="p-6 rounded-2xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition"
             >
-              <h3 className="text-xl font-bold text-gray-800 mb-6">
-                {" "}
+              <h3 className="text-lg font-medium mb-4">
                 Trends for ZIP {market.zip}
               </h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <HistoricalLineChart market={market} metricView="rent" />
                 <HistoricalLineChart
                   market={market}
@@ -248,7 +235,7 @@ export function AdminDashboard() {
           ))}
         </section>
       ) : (
-        <div className="p-6 text-center text-gray-600 bg-[#f9f9f9] rounded-xl shadow-md">
+        <div className="p-6 text-center text-gray-500 bg-white rounded-2xl shadow-sm border border-gray-100">
           Please select at least one ZIP code to view the comparison data.
         </div>
       )}

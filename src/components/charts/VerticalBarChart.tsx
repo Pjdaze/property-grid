@@ -133,7 +133,7 @@ export function VerticalBarChart({ data, loading }: VerticalBarChartProps) {
                   text: { fill: "#4b5563" },
                 },
                 legend: {
-                  text: { fill: "#" },
+                  text: { fill: "#222" },
                 },
               },
               grid: {
