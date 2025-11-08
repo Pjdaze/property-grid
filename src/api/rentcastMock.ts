@@ -5,31 +5,26 @@ import type {
 } from "../components/types";
 import MOCK_DATA from "./marketMockData.json";
 
-
 export async function fetchStatsForZip(zip: string): Promise<MarketData | null> {
   const mockData = MOCK_DATA as MarketData[];
   const result = mockData.find(m => m.zip === zip) ?? null;
 
-  // Simulate a small network delay for a realistic feel
   await new Promise(resolve => setTimeout(resolve, 500));
 
   if (result && import.meta.env.DEV) {
-    console.log(`[rentcast] using MOCK data for ${zip}`);
+    console.log(`rentcast using MOCK data for ${zip}`);
   } else if (import.meta.env.DEV) {
-    console.warn(`[rentcast] MOCK data not found for ${zip}`);
+    console.warn(`rentcast MOCK data not found for ${zip}`);
   }
 
   return result;
 }
 
-// Fetch multiple zips in parallel with caching 
 export async function fetchStatsForZips(zips: string[]): Promise<MarketData[]> {
   const mockData = MOCK_DATA as MarketData[];
   
-  // Simulate parallel fetching from mock data
   const results = await Promise.all(
     zips.map(async (z) => {
-      // Simulate lookup delay
       await new Promise(resolve => setTimeout(resolve, 50)); 
       return mockData.find(m => m.zip === z) ?? null;
     })
@@ -53,7 +48,6 @@ export function extractHousingTypeBreakdown(
   });
 }
 
-// this here returns breakdown for requested bedroom counts (1,2,3) 
 export function extractBedroomBreakdown(
   market: MarketData,
   bedrooms = [1, 2, 3]
@@ -70,16 +64,14 @@ export function extractBedroomBreakdown(
   });
 }
 
-/** this returns historical points for specific months in chronological order */
 export function extractHistoricalMonths(
   market: MarketData,
-  months = ["2025-01", "2025-02", "2025-03"]
+  months = ["2024-06", "2024-07", "2024-08"]
 ): HistoricalPoint[] {
-  const map = new Map(market.historical.map((h) => [h.month, h]));
-  return months.map((m) => map.get(m) ?? { month: m });
+console.log('Months: ', months)
+  return market.historical; 
 }
 
-// Convenience: build series data for grouped bar chart across zips for given metric key 
 export function buildSeriesForMetric(
   markets: MarketData[],
   metricKey: keyof Metrics = "averageRent"
